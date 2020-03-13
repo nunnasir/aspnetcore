@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewData["Title"] = "Data Table";
+}
+
+@section PageStyle
+{
+    <link href="~/Admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+}
+
+@section PageScript
+{
+    <script src="~/Admin/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#dataTable').DataTable({
+                "processing": true,
+                "serverSide": true,
+                "ajax": "/Admin/Product/GetProduct"
+            });
+        });
+    </script>
+}
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        @*<th>Id</th>*@
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                @*<tfoot>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                    </tr>
+                </tfoot>*@
+            </table>
+        </div>
+    </div>
+</div>
+
