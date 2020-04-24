@@ -1,0 +1,38 @@
+﻿@model MenuModel
+<!-- Divider -->
+<hr class="sidebar-divider my-0">
+
+<!-- Nav Item - Dashboard -->
+<li class="nav-item active">
+    <a class="nav-link" asp-area="Admin" asp-controller="Dashboard" asp-action="Index">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Dashboard</span>
+    </a>
+</li>
+
+<!-- Divider -->
+<hr class="sidebar-divider">
+
+<!-- Nav Item - Charts -->
+<li class="nav-item">
+    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">
+        <i class="fas fa-fw fa-home"></i>
+        <span>Home</span>
+    </a>
+</li>
+
+<!-- Nav Item - Tables -->
+<li class="nav-item">
+    <a class="nav-link" asp-area="Admin" asp-controller="Course" asp-action="Index">
+        <i class="fas fa-fw fa-table"></i>
+        <span>Course</span>
+    </a>
+</li>
+
+<!-- Divider -->
+<hr class="sidebar-divider d-none d-md-block">
+
+<!-- Sidebar Toggler (Sidebar) -->
+<div class="text-center d-none d-md-inline">
+    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+</div>

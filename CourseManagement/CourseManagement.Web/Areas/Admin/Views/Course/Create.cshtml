@@ -1,0 +1,43 @@
+﻿@model CourseManagement.Web.Areas.Admin.Models.CourseModel
+
+@{
+    ViewData["Title"] = "Create Course";
+}
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Create Course</h6>
+    </div>
+    <div class="card-body">
+
+        <form asp-area="Admin" asp-controller="Course" asp-action="Create" method="post">
+            <div class="form-group row">
+                <label asp-for="Title" class="col-sm-2 col-form-label">Course Title</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" asp-for="Title" placeholder="Title">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label asp-for="SeatCount" class="col-sm-2 col-form-label">Total Seat</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" asp-for="SeatCount" placeholder="Number of Seat">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label asp-for="Fee" class="col-sm-2 col-form-label">Course Fee</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control" asp-for="Fee" placeholder="Course Fee">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-6">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,75 @@
+﻿@*@model IEnumerable<CourseManagement.Web.Areas.Admin.Models.CourseModel>*@
+@model CourseManagement.Web.Areas.Admin.Models.CourseModel
+
+@{
+    ViewData["Title"] = "Course List";
+}
+
+@section PageStyles
+{
+    <link href="~/Admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+}
+
+@section PageScripts
+{
+    <script src="~/Admin/vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script>
+            //$(document).ready(function () {
+            //    $('#dataTable').DataTable({
+            //        "processing": true,
+            //        "serverSide": true,
+            //        "ajax": "/Admin/Course/GetCourse"
+            //    });
+            //});
+    </script>
+}
+
+<!-- DataTales Example -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">
+            <a asp-area="Admin" asp-controller="Course" asp-action="Create">Create New Course</a>
+        </h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                @*<thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>SeatCount</th>
+                            <th>Fee</th>
+                            <th>Published Date</th>
+                        </tr>
+                    </thead>*@
+
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.Title)</th>
+                        <th>@Html.DisplayNameFor(model => model.SeatCount)</th>
+                        <th>@Html.DisplayNameFor(model => model.Fee)</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var item in Model.GetAllCourse())
+                    {
+                        <tr>
+                            <td>@item.Title</td>
+                            <td>@item.SeatCount</td>
+                            <td>@item.Fee</td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+
