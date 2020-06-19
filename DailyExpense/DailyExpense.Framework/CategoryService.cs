@@ -16,7 +16,7 @@ namespace DailyExpense.Framework
         {
             var count = _expenseUnitOfWork.CategoryRepository.GetCount(c => c.Name == category.Name);
             if (count > 0)
-                throw new DuplicateException("Category title already exists!", category.Name);
+                throw new DuplicateException("Category title already exists!", nameof(category.Name));
 
             _expenseUnitOfWork.CategoryRepository.Add(category);
             _expenseUnitOfWork.Save();
@@ -26,11 +26,24 @@ namespace DailyExpense.Framework
         {
             var count = _expenseUnitOfWork.CategoryRepository.GetCount(c => c.Name == category.Name && c.Id != category.Id);
             if (count > 0)
-                throw new DuplicateException("Category title already exists!", category.Name);
+                throw new DuplicateException("Category title already exists!", nameof(category.Name));
 
             _expenseUnitOfWork.CategoryRepository.Edit(category);
             _expenseUnitOfWork.Save();
         }
+
+        public void Edit(Category category)
+        {
+            var count = _expenseUnitOfWork.CategoryRepository.GetCount(c => c.Name == category.Name && c.Id != category.Id);
+            if (count > 0)
+                throw new DuplicateException("Category title already exists!", nameof(category.Name));
+
+            var existCategory = _expenseUnitOfWork.CategoryRepository.GetById(category.Id);
+            existCategory.Name = category.Name;
+
+            _expenseUnitOfWork.Save();
+        }
+
 
         public Category DeleteCategory(int id)
         {
