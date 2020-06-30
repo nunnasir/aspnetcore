@@ -10,5 +10,6 @@ namespace DailyExpense.Framework
         IAccountRepository AccountRepository { get; set; }
         ICategoryRepository CategoryRepository { get; set; }
         IExpenseRepository ExpenseRepository { get; set; }
+        ITemperatureRepository TemperatureRepository { get; set; }
     }
 }

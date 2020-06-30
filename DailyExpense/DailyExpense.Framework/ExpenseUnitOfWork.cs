@@ -11,16 +11,19 @@ namespace DailyExpense.Framework
         public IAccountRepository AccountRepository { get; set; }
         public ICategoryRepository CategoryRepository { get; set; }
         public IExpenseRepository ExpenseRepository { get; set; }
-        
+        public ITemperatureRepository TemperatureRepository { get; set; }
+
         public ExpenseUnitOfWork(FrameworkContext dbContext, 
             IAccountRepository accountRepository, 
             ICategoryRepository categoryRepository, 
-            IExpenseRepository expenseRepository) 
+            IExpenseRepository expenseRepository,
+            ITemperatureRepository temperatureRepository) 
             : base(dbContext)
         {
             AccountRepository = accountRepository;
             CategoryRepository = categoryRepository;
             ExpenseRepository = expenseRepository;
+            TemperatureRepository = temperatureRepository;
         }
     }
 }

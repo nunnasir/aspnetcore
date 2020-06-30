@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Autofac;
 using DailyExpense.Framework;
 using DailyExpense.Web.Areas.Admin.Models;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DailyExpense.Web.Areas.Admin.Controllers
@@ -12,6 +14,12 @@ namespace DailyExpense.Web.Areas.Admin.Controllers
     [Area("Admin")]
     public class CategoryController : Controller
     {
+        private readonly IWebHostEnvironment _hostEnvironment;
+        public CategoryController(IWebHostEnvironment hostEnvironment)
+        {
+            _hostEnvironment = hostEnvironment;
+        }
+
         public IActionResult Index()
         {
             var model = Startup.AutofacContainer.Resolve<CategoryModel>();
@@ -26,13 +34,22 @@ namespace DailyExpense.Web.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind(nameof(CreateCategoryModel.Name))] CreateCategoryModel model)
+        public IActionResult Create([Bind(nameof(CreateCategoryModel.Name), nameof(CreateCategoryModel.ImageFile))] CreateCategoryModel model)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    model.Create();
+                    string wwwRootPath = _hostEnvironment.WebRootPath;
+                    string fileName = Path.GetFileNameWithoutExtension(model.ImageFile.FileName);
+                    string extension = Path.GetExtension(model.ImageFile.FileName);
+                    fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
+                    string path = Path.Combine(wwwRootPath + "/Image/Category/", fileName);
+                    var stream = new FileStream(path, FileMode.Create);
+                    model.ImageFile.CopyToAsync(stream);
+                    
+
+                    model.Create(fileName);
                     model.Response = new ResponseModel($"Category {model.Name} Create Successfully!", ResponseType.Success);
                     return RedirectToAction("Index");
                 }

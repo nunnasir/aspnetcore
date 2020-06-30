@@ -35,6 +35,9 @@ namespace DailyExpense.Framework
             builder.RegisterType<ExpenseRepository>().As<IExpenseRepository>()
                 .InstancePerLifetimeScope();
 
+            builder.RegisterType<TemperatureRepository>().As<ITemperatureRepository>()
+                .InstancePerLifetimeScope();
+
             builder.RegisterType<CategoryService>().As<ICategoryService>()
                 .InstancePerLifetimeScope();
 
@@ -42,6 +45,9 @@ namespace DailyExpense.Framework
                 .InstancePerLifetimeScope();
 
             builder.RegisterType<ExpenseService>().As<IExpenseService>()
+                .InstancePerLifetimeScope();
+
+            builder.RegisterType<TemperatureService>().As<ITemperatureService>()
                 .InstancePerLifetimeScope();
 
             base.Load(builder);

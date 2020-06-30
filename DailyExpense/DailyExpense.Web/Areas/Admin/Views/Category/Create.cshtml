@@ -11,7 +11,7 @@
             <div class="card-header">
                 @*<partial name="_ActionMessage" model="@Model.Response" />*@
             </div>
-            <form asp-action="Create" method="post">
+            <form asp-action="Create" method="post" enctype="multipart/form-data">
                 <div class="card-body">
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
@@ -20,6 +20,13 @@
                         <input asp-for="Name" class="form-control" placeholder="Enter Title" />
                         <span asp-validation-for="Name" class="text-danger"></span>
                     </div>
+
+                    <div class="form-group">
+                        <label asp-for="ImageFile" class="control-label"></label>
+                        <input asp-for="ImageFile" accept="image/*" />
+                        <span asp-validation-for="ImageFile" class="text-danger"></span>
+                    </div>
+
                 </div>
                 <div class="card-footer">
                     <button type="submit" class="btn btn-primary">Create</button>

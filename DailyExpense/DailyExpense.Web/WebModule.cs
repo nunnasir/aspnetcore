@@ -23,6 +23,7 @@ namespace DailyExpense.Web
             builder.RegisterType<CategoryModel>();
             builder.RegisterType<AccountModel>();
             builder.RegisterType<ExpenseModel>();
+            builder.RegisterType<CreateCategoryModel>();
 
             base.Load(builder);
         }

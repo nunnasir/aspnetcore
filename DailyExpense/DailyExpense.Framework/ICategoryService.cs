@@ -11,6 +11,5 @@ namespace DailyExpense.Framework
         void EditCategory(Category category);
         Category GetCategory(int id);
         Category DeleteCategory(int id);
-        void Edit(Category category);
     }
 }

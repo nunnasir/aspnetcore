@@ -19,21 +19,11 @@ namespace DailyExpense.Web.Areas.Admin.Models
 
         public void Edit()
         {
-            var category = new Category
-            {
-                Id = this.Id,
-                Name = this.Name
-            };
+            var category = _categoryService.GetCategory(this.Id);
+            category.Id = this.Id;
+            category.Name = this.Name;
 
-            _categoryService.Edit(category);
-
-            //----Not Working With This-----
-
-            //var category = _categoryService.GetCategory(this.Id);
-            //category.Id = this.Id;
-            //category.Name = this.Name;
-
-            //_categoryService.EditCategory(category);
+            _categoryService.EditCategory(category);
         }
         
         public void LoadCategory(int id)

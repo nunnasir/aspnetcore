@@ -1,0 +1,29 @@
+﻿@model CreateTempModel
+
+@{
+    ViewData["Title"] = "Create Temperature";
+}
+
+<div class="row">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header">
+            </div>
+            <form asp-action="Create" method="get">
+                <div class="card-body">
+
+                    <div class="form-group">
+                        <label asp-for="TempValue" class="control-label"></label>
+                        <input asp-for="TempValue" class="form-control" placeholder="Enter Temperature" />
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
