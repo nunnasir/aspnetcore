@@ -1,9 +1,12 @@
 ﻿using Autofac;
 using DailyExpense.Framework;
+using Microsoft.AspNetCore.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+
+using DailyExpense.Web;
 
 namespace DailyExpense.Web.Areas.Admin.Models
 {

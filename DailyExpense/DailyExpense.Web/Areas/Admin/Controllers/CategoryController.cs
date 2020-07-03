@@ -40,16 +40,7 @@ namespace DailyExpense.Web.Areas.Admin.Controllers
             {
                 try
                 {
-                    string wwwRootPath = _hostEnvironment.WebRootPath;
-                    string fileName = Path.GetFileNameWithoutExtension(model.ImageFile.FileName);
-                    string extension = Path.GetExtension(model.ImageFile.FileName);
-                    fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                    string path = Path.Combine(wwwRootPath + "/Image/Category/", fileName);
-                    var stream = new FileStream(path, FileMode.Create);
-                    model.ImageFile.CopyToAsync(stream);
-                    
-
-                    model.Create(fileName);
+                    model.Create();
                     model.Response = new ResponseModel($"Category {model.Name} Create Successfully!", ResponseType.Success);
                     return RedirectToAction("Index");
                 }

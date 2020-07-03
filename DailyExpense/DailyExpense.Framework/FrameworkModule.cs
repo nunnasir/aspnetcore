@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Microsoft.AspNetCore.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -49,7 +50,7 @@ namespace DailyExpense.Framework
 
             builder.RegisterType<TemperatureService>().As<ITemperatureService>()
                 .InstancePerLifetimeScope();
-
+            
             base.Load(builder);
         }
     }

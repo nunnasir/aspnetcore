@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using DailyExpense.Web.Areas.Admin.Models;
+using Microsoft.AspNetCore.Hosting;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,8 @@ namespace DailyExpense.Web
             builder.RegisterType<AccountModel>();
             builder.RegisterType<ExpenseModel>();
             builder.RegisterType<CreateCategoryModel>();
+            //builder.RegisterType<IWebHostEnvironment>();
+
 
             base.Load(builder);
         }
