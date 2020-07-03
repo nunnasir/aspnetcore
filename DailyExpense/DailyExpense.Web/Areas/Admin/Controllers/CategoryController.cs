@@ -6,12 +6,14 @@ using System.Threading.Tasks;
 using Autofac;
 using DailyExpense.Framework;
 using DailyExpense.Web.Areas.Admin.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DailyExpense.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize]
     public class CategoryController : Controller
     {
         private readonly IWebHostEnvironment _hostEnvironment;
